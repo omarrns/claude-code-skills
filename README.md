@@ -1,25 +1,35 @@
-# gtm-cold-email-pack
+# claude-code-skills
 
-A Claude Code skill pack for GTM engineers who write cold emails.
+A growing collection of Claude Code skills — meta utilities for building with Claude, GTM outreach drafters, and polish tools.
 
-Drop these skills into `~/.claude/skills/`, fill in one config file (`sender-profile.md`), and Claude will draft frame-appropriate cold emails for founders, growth leaders, and hiring managers — without the AI-generated tells.
-
-## Start here
+## Install
 
 ```bash
-git clone https://github.com/<you>/gtm-cold-email-pack
-cd gtm-cold-email-pack
+git clone https://github.com/omarrns/claude-code-skills
 ```
 
-Then in Claude Code, run **`/welcome`**. It interviews you, drafts `config/sender-profile.md`, and offers to symlink the rest of the pack's skills into `~/.claude/skills/` so you can use them from anywhere.
+Then symlink any skill you want into `~/.claude/skills/`:
 
-No Node, no scaffolder script — the setup itself is a Claude Code skill.
+```bash
+ln -s $(pwd)/claude-code-skills/skills/create-prompt ~/.claude/skills/create-prompt
+ln -s $(pwd)/claude-code-skills/skills/create-skill ~/.claude/skills/create-skill
+# etc.
+```
 
-## What's inside
+Or run **`/welcome`** to get an interactive setup for the GTM email skills specifically.
+
+## Skills
+
+### Claude Developer Tools
+
+- `create-prompt` — interactive interview that generates a production-quality prompt for the Claude API, Agent SDK, or any LLM system, following Anthropic's prompting best practices
+- `create-skill` — interactive interview that generates a polished `SKILL.md` for Claude Code, covering role, tools, instructions, output format, and examples
+
+### GTM Cold Email
 
 **Setup**
 
-- `welcome` — interactive setup that interviews you, drafts `sender-profile.md`, and installs the rest of the skills
+- `welcome` — interviews you, drafts `config/sender-profile.md`, and installs the email skills
 
 **Drafters** (pick one based on recipient)
 
@@ -28,14 +38,10 @@ No Node, no scaffolder script — the setup itself is a Claude Code skill.
 - `email-hiring-manager` — JD-anchored fit emails for role-specific outreach
 - `pick-frame` — router that selects the right drafter given recipient + sender profile
 
-**Polish** (run on any draft)
+**Polish**
 
-- `humanize` — strips AI-tells and rewrites in your voice (reads `sender-profile.md`)
-- `story-consistency` — fact-checks drafts against your `sender-profile.md`
-
-## Status
-
-Pre-release. Skills are being genericized from a private working set. See `examples/` for sample inputs and outputs.
+- `humanize` — strips AI-tells and rewrites in your voice
+- `story-consistency` — fact-checks drafts against your sender profile
 
 ## License
 
